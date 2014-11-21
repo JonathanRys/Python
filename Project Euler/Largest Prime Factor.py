@@ -1,18 +1,29 @@
-n = 3
-result = 0
-while n * n <= 600851475143:
-    if 600851475143 % n == 0:
-        print(n)
-        m = 3
-        fail = False
-        while m * m <= n:
-            if n % m == 0:
-                print("failing ", n, m)
-                fail = True
-                break
-            m += 2
-        if fail == False:
-            result = n
-    n += 2
+def isPrime(number):
+    if number % 2 == 0:
+        return False
+    x = 3
+    while x * x <= number:
+        if number % x == 0:
+            return False
+        x += 2
+    return True
 
-print(result)
+def factorize(number):
+    x = 3
+    result = []
+    while x * x <= number:
+        if number % x == 0:
+            result.append(x)
+        x += 2
+    return result
+
+def largestPrimeFactor(number):
+    x = 3
+    while x * x <= number:
+        if number % x == 0:
+            if isPrime(x):
+                result = x
+        x += 2
+    return result
+
+print(largestPrimeFactor(600851475143))
